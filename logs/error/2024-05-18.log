@@ -1,0 +1,3 @@
+2024-05-18 17:10:46	PANIC	common/database.go:60	CatMi-devops/utils/common.ConnMysql	初始化mysql数据库异常: dial tcp 192.168.2.112:3306: connectex: No connection could be made because the target machine actively refused it.
+2024-05-18 17:35:42	PANIC	common/casbin.go:17	CatMi-devops/utils/common.InitCasbinEnforcer	初始化Casbin失败：open rbac_model.conf: The system cannot find the file specified.
+2024-05-18 17:36:00	PANIC	common/casbin.go:17	CatMi-devops/utils/common.InitCasbinEnforcer	初始化Casbin失败：open /config/rbac_model.conf: The system cannot find the path specified.

@@ -1,0 +1,92 @@
+2024-05-18 16:58:23	INFO	common/logger.go:108	CatMi-devops/utils/common.InitLogger	初始化zap日志完成!
+2024-05-18 17:02:31	INFO	common/logger.go:108	CatMi-devops/utils/common.InitLogger	初始化zap日志完成!
+2024-05-18 17:03:26	INFO	common/logger.go:108	CatMi-devops/utils/common.InitLogger	初始化zap日志完成!
+2024-05-18 17:05:11	INFO	common/logger.go:108	CatMi-devops/utils/common.InitLogger	初始化zap日志完成!
+2024-05-18 17:06:13	INFO	common/logger.go:108	CatMi-devops/utils/common.InitLogger	初始化zap日志完成!
+2024-05-18 17:07:36	INFO	common/logger.go:108	CatMi-devops/utils/common.InitLogger	初始化zap日志完成!
+2024-05-18 17:08:11	INFO	common/logger.go:108	CatMi-devops/utils/common.InitLogger	初始化zap日志完成!
+2024-05-18 17:09:07	INFO	common/logger.go:108	CatMi-devops/utils/common.InitLogger	初始化zap日志完成!
+2024-05-18 17:09:29	INFO	common/logger.go:108	CatMi-devops/utils/common.InitLogger	初始化zap日志完成!
+2024-05-18 17:09:29	INFO	common/validator.go:26	CatMi-devops/utils/common.InitValidate	初始化validator.v10数据校验器完成
+2024-05-18 17:10:23	INFO	common/logger.go:108	CatMi-devops/utils/common.InitLogger	初始化zap日志完成!
+2024-05-18 17:10:23	INFO	common/validator.go:26	CatMi-devops/utils/common.InitValidate	初始化validator.v10数据校验器完成
+2024-05-18 17:10:30	INFO	common/logger.go:108	CatMi-devops/utils/common.InitLogger	初始化zap日志完成!
+2024-05-18 17:10:30	INFO	common/validator.go:26	CatMi-devops/utils/common.InitValidate	初始化validator.v10数据校验器完成
+2024-05-18 17:10:44	INFO	common/logger.go:108	CatMi-devops/utils/common.InitLogger	初始化zap日志完成!
+2024-05-18 17:11:50	INFO	common/logger.go:108	CatMi-devops/utils/common.InitLogger	初始化zap日志完成!
+2024-05-18 17:11:50	INFO	common/database.go:66	CatMi-devops/utils/common.ConnMysql	初始化mysql数据库完成! dsn: root:******@tcp(192.168.2.112:3310)/catmi?charset=utf8mb4&collation=utf8mb4_general_ci&parseTime=True&loc=Local&timeout=10000ms
+2024-05-18 17:11:50	INFO	common/validator.go:26	CatMi-devops/utils/common.InitValidate	初始化validator.v10数据校验器完成
+2024-05-18 17:12:06	INFO	common/logger.go:108	CatMi-devops/utils/common.InitLogger	初始化zap日志完成!
+2024-05-18 17:12:06	INFO	common/validator.go:26	CatMi-devops/utils/common.InitValidate	初始化validator.v10数据校验器完成
+2024-05-18 17:12:20	INFO	common/logger.go:108	CatMi-devops/utils/common.InitLogger	初始化zap日志完成!
+2024-05-18 17:12:28	INFO	common/logger.go:108	CatMi-devops/utils/common.InitLogger	初始化zap日志完成!
+2024-05-18 17:12:28	INFO	common/database.go:66	CatMi-devops/utils/common.ConnMysql	初始化mysql数据库完成! dsn: root:******@tcp(192.168.2.112:3310)/catmi?charset=utf8mb4&collation=utf8mb4_general_ci&parseTime=True&loc=Local&timeout=10000ms
+2024-05-18 17:12:42	INFO	common/logger.go:108	CatMi-devops/utils/common.InitLogger	初始化zap日志完成!
+2024-05-18 17:12:42	INFO	common/database.go:66	CatMi-devops/utils/common.ConnMysql	初始化mysql数据库完成! dsn: root:******@tcp(192.168.2.112:3310)/catmi?charset=utf8mb4&collation=utf8mb4_general_ci&parseTime=True&loc=Local&timeout=10000ms
+2024-05-18 17:20:08	INFO	common/logger.go:108	CatMi-devops/utils/common.InitLogger	初始化zap日志完成!
+2024-05-18 17:21:17	INFO	common/logger.go:108	CatMi-devops/utils/common.InitLogger	初始化zap日志完成!
+2024-05-18 17:21:50	INFO	common/logger.go:108	CatMi-devops/utils/common.InitLogger	初始化zap日志完成!
+2024-05-18 17:22:18	INFO	common/logger.go:108	CatMi-devops/utils/common.InitLogger	初始化zap日志完成!
+2024-05-18 17:24:16	INFO	common/logger.go:108	CatMi-devops/utils/common.InitLogger	初始化zap日志完成!
+2024-05-18 17:25:23	INFO	common/logger.go:108	CatMi-devops/utils/common.InitLogger	初始化zap日志完成!
+2024-05-18 17:30:54	INFO	common/logger.go:108	CatMi-devops/utils/common.InitLogger	初始化zap日志完成!
+2024-05-18 17:30:54	INFO	common/database.go:74	CatMi-devops/utils/common.ConnMysql	初始化mysql数据库完成! dsn: root:******@tcp(192.168.2.112:3310)/catmi?charset=utf8mb4&collation=utf8mb4_general_ci&parseTime=True&loc=Local&timeout=10000ms
+2024-05-18 17:30:54	INFO	common/casbin.go:23	CatMi-devops/utils/common.InitCasbinEnforcer	初始化Casbin完成!
+2024-05-18 17:30:54	INFO	common/validator.go:26	CatMi-devops/utils/common.InitValidate	初始化validator.v10数据校验器完成
+2024-05-18 17:30:55	INFO	router/all_router.go:54	CatMi-devops/router.InitRoutes	初始化路由完成！
+2024-05-18 17:30:55	INFO	CatMi-devops/main.go:68	main.main	Server is running at 0.0.0.0:8888/api
+2024-05-18 17:31:32	INFO	CatMi-devops/main.go:79	main.main	Shutting down server...
+2024-05-18 17:31:32	INFO	CatMi-devops/main.go:89	main.main	Server exiting!
+2024-05-18 17:31:44	INFO	common/logger.go:108	CatMi-devops/utils/common.InitLogger	初始化zap日志完成!
+2024-05-18 17:32:05	INFO	common/logger.go:108	CatMi-devops/utils/common.InitLogger	初始化zap日志完成!
+2024-05-18 17:32:05	INFO	common/database.go:75	CatMi-devops/utils/common.ConnMysql	初始化mysql数据库完成! dsn: root:******@tcp(192.168.2.112:3310)/catmi?charset=utf8mb4&collation=utf8mb4_general_ci&parseTime=True&loc=Local&timeout=10000ms
+2024-05-18 17:32:05	INFO	common/casbin.go:23	CatMi-devops/utils/common.InitCasbinEnforcer	初始化Casbin完成!
+2024-05-18 17:32:05	INFO	common/validator.go:26	CatMi-devops/utils/common.InitValidate	初始化validator.v10数据校验器完成
+2024-05-18 17:32:05	INFO	router/all_router.go:54	CatMi-devops/router.InitRoutes	初始化路由完成！
+2024-05-18 17:32:05	INFO	CatMi-devops/main.go:67	main.main	Server is running at 0.0.0.0:8888/api
+2024-05-18 17:32:09	INFO	CatMi-devops/main.go:78	main.main	Shutting down server...
+2024-05-18 17:32:09	INFO	CatMi-devops/main.go:88	main.main	Server exiting!
+2024-05-18 17:34:54	INFO	common/logger.go:108	CatMi-devops/utils/common.InitLogger	初始化zap日志完成!
+2024-05-18 17:34:54	INFO	common/database.go:69	CatMi-devops/utils/common.ConnMysql	初始化mysql数据库完成! dsn: root:******@tcp(192.168.2.112:3310)/catmi?charset=utf8mb4&collation=utf8mb4_general_ci&parseTime=True&loc=Local&timeout=10000ms
+2024-05-18 17:35:04	INFO	common/logger.go:108	CatMi-devops/utils/common.InitLogger	初始化zap日志完成!
+2024-05-18 17:35:04	INFO	common/database.go:69	CatMi-devops/utils/common.ConnMysql	初始化mysql数据库完成! dsn: root:******@tcp(192.168.2.112:3310)/catmi?charset=utf8mb4&collation=utf8mb4_general_ci&parseTime=True&loc=Local&timeout=10000ms
+2024-05-18 17:35:04	INFO	common/casbin.go:23	CatMi-devops/utils/common.InitCasbinEnforcer	初始化Casbin完成!
+2024-05-18 17:35:04	INFO	common/validator.go:26	CatMi-devops/utils/common.InitValidate	初始化validator.v10数据校验器完成
+2024-05-18 17:35:04	INFO	router/all_router.go:54	CatMi-devops/router.InitRoutes	初始化路由完成！
+2024-05-18 17:35:04	INFO	CatMi-devops/main.go:68	main.main	Server is running at 0.0.0.0:8888/api
+2024-05-18 17:35:28	INFO	CatMi-devops/main.go:79	main.main	Shutting down server...
+2024-05-18 17:35:28	INFO	CatMi-devops/main.go:89	main.main	Server exiting!
+2024-05-18 17:35:42	INFO	common/logger.go:108	CatMi-devops/utils/common.InitLogger	初始化zap日志完成!
+2024-05-18 17:35:42	INFO	common/database.go:69	CatMi-devops/utils/common.ConnMysql	初始化mysql数据库完成! dsn: root:******@tcp(192.168.2.112:3310)/catmi?charset=utf8mb4&collation=utf8mb4_general_ci&parseTime=True&loc=Local&timeout=10000ms
+2024-05-18 17:36:00	INFO	common/logger.go:108	CatMi-devops/utils/common.InitLogger	初始化zap日志完成!
+2024-05-18 17:36:00	INFO	common/database.go:69	CatMi-devops/utils/common.ConnMysql	初始化mysql数据库完成! dsn: root:******@tcp(192.168.2.112:3310)/catmi?charset=utf8mb4&collation=utf8mb4_general_ci&parseTime=True&loc=Local&timeout=10000ms
+2024-05-18 17:36:10	INFO	common/logger.go:108	CatMi-devops/utils/common.InitLogger	初始化zap日志完成!
+2024-05-18 17:36:10	INFO	common/database.go:69	CatMi-devops/utils/common.ConnMysql	初始化mysql数据库完成! dsn: root:******@tcp(192.168.2.112:3310)/catmi?charset=utf8mb4&collation=utf8mb4_general_ci&parseTime=True&loc=Local&timeout=10000ms
+2024-05-18 17:36:10	INFO	common/casbin.go:22	CatMi-devops/utils/common.InitCasbinEnforcer	初始化Casbin完成!
+2024-05-18 17:36:10	INFO	common/validator.go:26	CatMi-devops/utils/common.InitValidate	初始化validator.v10数据校验器完成
+2024-05-18 17:36:10	INFO	router/all_router.go:54	CatMi-devops/router.InitRoutes	初始化路由完成！
+2024-05-18 17:36:10	INFO	CatMi-devops/main.go:68	main.main	Server is running at 0.0.0.0:8888/api
+2024-05-18 17:50:16	DEBUG	middleware/auth_mid.go:110	CatMi-devops/middleware.unauthorized	JWT认证失败, 错误码: 401, 错误信息: 无法解密, 私钥可能不正确,解析私钥失败
+2024-05-18 17:50:29	DEBUG	middleware/auth_mid.go:110	CatMi-devops/middleware.unauthorized	JWT认证失败, 错误码: 401, 错误信息: 无法解密, 私钥可能不正确,解析私钥失败
+2024-05-18 17:51:06	INFO	CatMi-devops/main.go:79	main.main	Shutting down server...
+2024-05-18 17:51:06	INFO	CatMi-devops/main.go:89	main.main	Server exiting!
+2024-05-18 18:08:27	INFO	common/logger.go:108	CatMi-devops/utils/common.InitLogger	初始化zap日志完成!
+2024-05-18 18:08:28	INFO	common/database.go:69	CatMi-devops/utils/common.ConnMysql	初始化mysql数据库完成! dsn: root:******@tcp(192.168.2.112:3310)/catmi?charset=utf8mb4&collation=utf8mb4_general_ci&parseTime=True&loc=Local&timeout=10000ms
+2024-05-18 18:09:58	INFO	common/logger.go:108	CatMi-devops/utils/common.InitLogger	初始化zap日志完成!
+2024-05-18 18:09:58	INFO	common/database.go:69	CatMi-devops/utils/common.ConnMysql	初始化mysql数据库完成! dsn: root:******@tcp(192.168.2.112:3310)/catmi?charset=utf8mb4&collation=utf8mb4_general_ci&parseTime=True&loc=Local&timeout=10000ms
+2024-05-18 18:09:59	INFO	common/casbin.go:22	CatMi-devops/utils/common.InitCasbinEnforcer	初始化Casbin完成!
+2024-05-18 18:09:59	INFO	common/validator.go:26	CatMi-devops/utils/common.InitValidate	初始化validator.v10数据校验器完成
+2024-05-18 18:09:59	INFO	router/all_router.go:54	CatMi-devops/router.InitRoutes	初始化路由完成！
+2024-05-18 18:09:59	INFO	CatMi-devops/main.go:68	main.main	Server is running at 0.0.0.0:8888/api
+2024-05-18 18:30:35	INFO	CatMi-devops/main.go:79	main.main	Shutting down server...
+2024-05-18 18:30:35	INFO	CatMi-devops/main.go:89	main.main	Server exiting!
+2024-05-18 18:30:53	INFO	common/logger.go:108	CatMi-devops/utils/common.InitLogger	初始化zap日志完成!
+2024-05-18 18:30:53	INFO	common/database.go:69	CatMi-devops/utils/common.ConnMysql	初始化mysql数据库完成! dsn: root:******@tcp(192.168.2.112:3310)/catmi?charset=utf8mb4&collation=utf8mb4_general_ci&parseTime=True&loc=Local&timeout=10000ms
+2024-05-18 18:31:01	INFO	common/logger.go:108	CatMi-devops/utils/common.InitLogger	初始化zap日志完成!
+2024-05-18 18:31:01	INFO	common/database.go:69	CatMi-devops/utils/common.ConnMysql	初始化mysql数据库完成! dsn: root:******@tcp(192.168.2.112:3310)/catmi?charset=utf8mb4&collation=utf8mb4_general_ci&parseTime=True&loc=Local&timeout=10000ms
+2024-05-18 18:31:01	INFO	common/casbin.go:22	CatMi-devops/utils/common.InitCasbinEnforcer	初始化Casbin完成!
+2024-05-18 18:31:01	INFO	common/validator.go:26	CatMi-devops/utils/common.InitValidate	初始化validator.v10数据校验器完成
+2024-05-18 18:31:02	INFO	router/all_router.go:54	CatMi-devops/router.InitRoutes	初始化路由完成！
+2024-05-18 18:31:02	INFO	CatMi-devops/main.go:68	main.main	Server is running at 0.0.0.0:8888/api
+2024-05-20 09:55:07	INFO	CatMi-devops/main.go:79	main.main	Shutting down server...
+2024-05-20 09:55:07	INFO	CatMi-devops/main.go:89	main.main	Server exiting!

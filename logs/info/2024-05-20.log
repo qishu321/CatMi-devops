@@ -1,0 +1,18 @@
+2024-05-20 09:58:30	INFO	common/logger.go:108	CatMi-devops/utils/common.InitLogger	初始化zap日志完成!
+2024-05-20 09:58:30	INFO	common/database.go:69	CatMi-devops/utils/common.ConnMysql	初始化mysql数据库完成! dsn: root:******@tcp(192.168.2.112:3310)/catmi?charset=utf8mb4&collation=utf8mb4_general_ci&parseTime=True&loc=Local&timeout=10000ms
+2024-05-20 09:58:45	INFO	common/logger.go:108	CatMi-devops/utils/common.InitLogger	初始化zap日志完成!
+2024-05-20 09:58:45	INFO	common/database.go:69	CatMi-devops/utils/common.ConnMysql	初始化mysql数据库完成! dsn: root:******@tcp(192.168.2.112:3310)/catmi?charset=utf8mb4&collation=utf8mb4_general_ci&parseTime=True&loc=Local&timeout=10000ms
+2024-05-20 09:58:45	INFO	common/casbin.go:22	CatMi-devops/utils/common.InitCasbinEnforcer	初始化Casbin完成!
+2024-05-20 09:58:45	INFO	common/validator.go:26	CatMi-devops/utils/common.InitValidate	初始化validator.v10数据校验器完成
+2024-05-20 09:58:45	INFO	router/all_router.go:54	CatMi-devops/router.InitRoutes	初始化路由完成！
+2024-05-20 09:58:45	INFO	CatMi-devops/main.go:68	main.main	Server is running at 0.0.0.0:8888/api
+2024-05-20 11:07:48	INFO	CatMi-devops/main.go:79	main.main	Shutting down server...
+2024-05-20 11:07:48	INFO	CatMi-devops/main.go:89	main.main	Server exiting!
+2024-05-20 11:11:18	INFO	common/logger.go:108	CatMi-devops/utils/common.InitLogger	初始化zap日志完成!
+2024-05-20 11:11:18	INFO	common/database.go:69	CatMi-devops/utils/common.ConnMysql	初始化mysql数据库完成! dsn: root:******@tcp(192.168.2.112:3310)/catmi?charset=utf8mb4&collation=utf8mb4_general_ci&parseTime=True&loc=Local&timeout=10000ms
+2024-05-20 11:11:26	INFO	common/logger.go:108	CatMi-devops/utils/common.InitLogger	初始化zap日志完成!
+2024-05-20 11:11:26	INFO	common/database.go:69	CatMi-devops/utils/common.ConnMysql	初始化mysql数据库完成! dsn: root:******@tcp(192.168.2.112:3310)/catmi?charset=utf8mb4&collation=utf8mb4_general_ci&parseTime=True&loc=Local&timeout=10000ms
+2024-05-20 11:11:26	INFO	common/casbin.go:22	CatMi-devops/utils/common.InitCasbinEnforcer	初始化Casbin完成!
+2024-05-20 11:11:26	INFO	common/validator.go:26	CatMi-devops/utils/common.InitValidate	初始化validator.v10数据校验器完成
+2024-05-20 11:11:26	INFO	router/all_router.go:54	CatMi-devops/router.InitRoutes	初始化路由完成！
+2024-05-20 11:11:26	INFO	CatMi-devops/main.go:68	main.main	Server is running at 0.0.0.0:8888/api
