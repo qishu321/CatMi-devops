@@ -6,9 +6,11 @@ import (
 	"CatMi-devops/middleware"
 	"CatMi-devops/router"
 	"CatMi-devops/utils/common"
+	"CatMi-devops/utils/tools"
 	"context"
 	"flag"
 	"fmt"
+	"log"
 	"net/http"
 	"os"
 	"os/signal"
@@ -19,15 +21,21 @@ func main() {
 	// 加载配置文件到全局配置结构体
 	config.InitConfig()
 	// 初始化日志
+	log.Print("user:", tools.NewGenPasswd("123456"))
+
 	common.InitLogger()
 
 	// 初始化DB
 	common.DBS()
-	// 初始化数据库(init_db -true)
+
+	// 初始化数据库(-init_db)
 	initDB := flag.Bool("init_db", false, "initialize database")
 	flag.Parse()
 	if *initDB { //判断是否需要更新表结构
 		common.InitDB()
+		common.InitCasbinEnforcer()
+		// 初始化mysql数据
+		common.InitData()
 		return
 	}
 
@@ -36,9 +44,6 @@ func main() {
 
 	// 初始化Validator数据校验
 	common.InitValidate()
-
-	// 初始化mysql数据
-	common.InitData()
 
 	// 操作日志中间件处理日志时没有将日志发送到rabbitmq或者kafka中, 而是发送到了channel中
 	// 这里开启3个goroutine处理channel将日志记录到数据库

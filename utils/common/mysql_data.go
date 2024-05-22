@@ -5,6 +5,7 @@ import (
 	"CatMi-devops/model"
 	"CatMi-devops/utils/tools"
 	"errors"
+
 	"github.com/thoas/go-funk"
 	"gorm.io/gorm"
 )
@@ -226,11 +227,11 @@ func InitData() {
 			Password:      tools.NewGenPasswd("123456"),
 			Nickname:      "管理员",
 			GivenName:     "最强后台",
-			Mail:          "admin@eryajf.net",
+			Mail:          "admin@qq.com",
 			JobNumber:     "0000",
 			Mobile:        "18888888888",
 			Avatar:        "https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif",
-			PostalAddress: "中国河南省南阳市",
+			PostalAddress: "中国",
 			Departments:   "ops",
 			Position:      "系统管理员",
 			Introduction:  "最强后台的管理员",
@@ -239,7 +240,7 @@ func InitData() {
 			Roles:         roles[:1],
 		},
 	}
-
+	Log.Warn("user:", tools.NewGenPasswd("123456"))
 	for _, user := range users {
 		err := DB.First(&user, user.ID).Error
 		if errors.Is(err, gorm.ErrRecordNotFound) {
@@ -249,6 +250,7 @@ func InitData() {
 
 	if len(newUsers) > 0 {
 		err := DB.Create(&newUsers).Error
+
 		if err != nil {
 			Log.Errorf("写入用户数据失败：%v", err)
 		}
