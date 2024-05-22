@@ -16,3 +16,5 @@
 2024-05-20 11:11:26	INFO	common/validator.go:26	CatMi-devops/utils/common.InitValidate	初始化validator.v10数据校验器完成
 2024-05-20 11:11:26	INFO	router/all_router.go:54	CatMi-devops/router.InitRoutes	初始化路由完成！
 2024-05-20 11:11:26	INFO	CatMi-devops/main.go:68	main.main	Server is running at 0.0.0.0:8888/api
+2024-05-20 11:32:21	INFO	CatMi-devops/main.go:79	main.main	Shutting down server...
+2024-05-20 11:32:21	INFO	CatMi-devops/main.go:89	main.main	Server exiting!

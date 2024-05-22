@@ -2,16 +2,15 @@ package middleware
 
 import (
 	"CatMi-devops/config"
+	"CatMi-devops/initalize/system"
 	"CatMi-devops/model"
 	"CatMi-devops/request"
 	"CatMi-devops/response"
-	"CatMi-devops/initalize/system"
 	"CatMi-devops/utils/common"
 	"CatMi-devops/utils/tools"
 	"fmt"
-	"github.com/gin-gonic/gin"
 	jwt "github.com/appleboy/gin-jwt/v2"
-
+	"github.com/gin-gonic/gin"
 	"time"
 )
 
