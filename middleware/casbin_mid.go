@@ -1,13 +1,15 @@
 package middleware
 
 import (
-	"CatMi-devops/initalize/system"
-	"sync"
 	"CatMi-devops/config"
+	"CatMi-devops/initalize/system"
 	"CatMi-devops/utils/common"
 	"CatMi-devops/utils/tools"
-	"github.com/gin-gonic/gin"
 	"strings"
+	"sync"
+
+	"github.com/gin-gonic/gin"
+	"github.com/sirupsen/logrus"
 )
 
 var checkLock sync.Mutex
@@ -56,7 +58,10 @@ func check(subs []string, obj string, act string) bool {
 	defer checkLock.Unlock()
 	isPass := false
 	for _, sub := range subs {
-		pass, _ := common.CasbinEnforcer.Enforce(sub, obj, act)
+		pass, err := common.CasbinEnforcer.Enforce(sub, obj, act)
+		if err != nil {
+			logrus.Error("check err :", err)
+		}
 		if pass {
 			isPass = true
 			break

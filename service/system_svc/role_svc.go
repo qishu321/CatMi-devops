@@ -8,6 +8,7 @@ import (
 	"CatMi-devops/utils/common"
 	"CatMi-devops/utils/tools"
 	"fmt"
+
 	"github.com/gin-gonic/gin"
 	"github.com/thoas/go-funk"
 )
@@ -371,11 +372,10 @@ func (l RoleSvc) UpdateApis(c *gin.Context, req interface{}) (data interface{}, 
 	if !ok {
 		return nil, ReqAssertErr
 	}
-	_ = c
 
 	// 根据path中的角色ID获取该角色信息
-	roles, _ := system.Role.GetRolesByIds([]uint{r.RoleID})
-	if len(roles) == 0 {
+	roles, err := system.Role.GetRolesByIds([]uint{r.RoleID})
+	if err != nil || len(roles) == 0 {
 		return nil, tools.NewMySqlError(fmt.Errorf("未获取到角色信息"))
 	}
 
@@ -386,10 +386,8 @@ func (l RoleSvc) UpdateApis(c *gin.Context, req interface{}) (data interface{}, 
 	}
 
 	// (非管理员)不能更新比自己角色等级高或相等角色的权限菜单
-	if minSort != 1 {
-		if minSort >= roles[0].Sort {
-			return nil, tools.NewValidatorError(fmt.Errorf("不能更新比自己角色等级高或相等角色的权限菜单"))
-		}
+	if minSort != 1 && minSort >= roles[0].Sort {
+		return nil, tools.NewValidatorError(fmt.Errorf("不能更新比自己角色等级高或相等角色的权限菜单"))
 	}
 
 	// 获取当前用户所拥有的权限接口
@@ -399,7 +397,8 @@ func (l RoleSvc) UpdateApis(c *gin.Context, req interface{}) (data interface{}, 
 		policy, _ := common.CasbinEnforcer.GetFilteredPolicy(0, role.Keyword)
 		ctxRolesPolicies = append(ctxRolesPolicies, policy...)
 	}
-	// 得到path中的角色ID对应角色能够设置的权限接口集合
+
+	// 更新要为角色设置的策略
 	for _, policy := range ctxRolesPolicies {
 		policy[0] = roles[0].Keyword
 	}
@@ -409,6 +408,7 @@ func (l RoleSvc) UpdateApis(c *gin.Context, req interface{}) (data interface{}, 
 	if err != nil {
 		return nil, tools.NewMySqlError(fmt.Errorf("根据接口ID获取接口信息失败"))
 	}
+
 	// 生成前端想要设置的角色policies
 	reqRolePolicies := make([][]string, 0)
 	for _, api := range apis {
@@ -431,5 +431,74 @@ func (l RoleSvc) UpdateApis(c *gin.Context, req interface{}) (data interface{}, 
 	if err != nil {
 		return nil, tools.NewMySqlError(fmt.Errorf("更新角色的权限接口失败"))
 	}
+
 	return nil, nil
 }
+
+// func (l RoleSvc) UpdateApis(c *gin.Context, req interface{}) (data interface{}, rspError interface{}) {
+// 	r, ok := req.(*request.RoleUpdateApisReq)
+// 	if !ok {
+// 		return nil, ReqAssertErr
+// 	}
+// 	_ = c
+
+// 	// 根据path中的角色ID获取该角色信息
+// 	roles, _ := system.Role.GetRolesByIds([]uint{r.RoleID})
+// 	if len(roles) == 0 {
+// 		return nil, tools.NewMySqlError(fmt.Errorf("未获取到角色信息"))
+// 	}
+
+// 	// 当前用户角色排序最小值（最高等级角色）以及当前用户
+// 	minSort, ctxUser, err := system.User.GetCurrentUserMinRoleSort(c)
+// 	if err != nil {
+// 		return nil, tools.NewMySqlError(fmt.Errorf("获取当前用户最高角色等级失败: %s", err.Error()))
+// 	}
+
+// 	// (非管理员)不能更新比自己角色等级高或相等角色的权限菜单
+// 	if minSort != 1 {
+// 		if minSort >= roles[0].Sort {
+// 			return nil, tools.NewValidatorError(fmt.Errorf("不能更新比自己角色等级高或相等角色的权限菜单"))
+// 		}
+// 	}
+
+// 	// 获取当前用户所拥有的权限接口
+// 	ctxRoles := ctxUser.Roles
+// 	ctxRolesPolicies := make([][]string, 0)
+// 	for _, role := range ctxRoles {
+// 		policy, _ := common.CasbinEnforcer.GetFilteredPolicy(0, role.Keyword)
+// 		ctxRolesPolicies = append(ctxRolesPolicies, policy...)
+// 	}
+// 	// 得到path中的角色ID对应角色能够设置的权限接口集合
+// 	for _, policy := range ctxRolesPolicies {
+// 		policy[0] = roles[0].Keyword
+// 	}
+
+// 	// 根据apiID获取接口详情
+// 	apis, err := system.Api.GetApisById(r.ApiIds)
+// 	if err != nil {
+// 		return nil, tools.NewMySqlError(fmt.Errorf("根据接口ID获取接口信息失败"))
+// 	}
+// 	// 生成前端想要设置的角色policies
+// 	reqRolePolicies := make([][]string, 0)
+// 	for _, api := range apis {
+// 		reqRolePolicies = append(reqRolePolicies, []string{
+// 			roles[0].Keyword, api.Path, api.Method,
+// 		})
+// 	}
+
+// 	// (非管理员)不能把角色的权限接口设置的比当前用户所拥有的权限接口多
+// 	if minSort != 1 {
+// 		for _, reqPolicy := range reqRolePolicies {
+// 			if !funk.Contains(ctxRolesPolicies, reqPolicy) {
+// 				return nil, tools.NewValidatorError(fmt.Errorf("无权设置路径为%s,请求方式为%s的接口", reqPolicy[1], reqPolicy[2]))
+// 			}
+// 		}
+// 	}
+
+// 	// 更新角色的权限接口
+// 	err = system.Role.UpdateRoleApis(roles[0].Keyword, reqRolePolicies)
+// 	if err != nil {
+// 		return nil, tools.NewMySqlError(fmt.Errorf("更新角色的权限接口失败"))
+// 	}
+// 	return nil, nil
+// }

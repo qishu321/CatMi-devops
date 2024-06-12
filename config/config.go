@@ -3,6 +3,7 @@ package config
 import (
 	"fmt"
 	"os"
+
 	"github.com/fsnotify/fsnotify"
 	"github.com/spf13/viper"
 	"go.uber.org/zap/zapcore"
@@ -16,6 +17,7 @@ type config struct {
 	Logs      *LogsConfig      `mapstructure:"logs" json:"logs"`
 	Mysql     *MysqlConfig     `mapstructure:"mysql" json:"mysql"`
 	Casbin    *CasbinConfig    `mapstructure:"casbin" json:"casbin"`
+	Cmdb      *CmdbConfig      `mapstructure:"cmdb" json:"cmdb"`
 	Jwt       *JwtConfig       `mapstructure:"jwt" json:"jwt"`
 	RateLimit *RateLimitConfig `mapstructure:"rate-limit" json:"rateLimit"`
 }
@@ -110,6 +112,9 @@ type MysqlConfig struct {
 
 type CasbinConfig struct {
 	ModelPath string `mapstructure:"model-path" json:"modelPath"`
+}
+type CmdbConfig struct {
+	Encryptkey string `mapstructure:"encryptkey" json:"encryptkey"`
 }
 
 type JwtConfig struct {

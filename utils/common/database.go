@@ -4,8 +4,10 @@ import (
 	"CatMi-devops/config"
 	"CatMi-devops/model"
 	"fmt"
+
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
+	"gorm.io/gorm/logger"
 )
 
 // 全局数据库对象
@@ -19,7 +21,10 @@ func DBS() {
 // 初始化数据库
 func InitDB() {
 	dbAutoMigrate()
+	Log.Infof("初始化mysql数据库数据完成!")
+
 }
+
 // 自动迁移表结构
 func dbAutoMigrate() {
 	_ = DB.AutoMigrate(
@@ -29,9 +34,16 @@ func dbAutoMigrate() {
 		&model.Menu{},
 		&model.Api{},
 		&model.OperationLog{},
+		&model.ServerCmdb{},
+		&model.ServerGroup{},
+		&model.Key{},
+		&model.CommandLog{},
+		&model.Template{},
+		&model.Template_Log{},
+		&model.Task{},
+		&model.TaskEnv{},
 	)
 }
-
 
 func ConnMysql() *gorm.DB {
 	dsn := fmt.Sprintf("%s:%s@tcp(%s:%d)/%s?charset=%s&collation=%s&%s",
@@ -58,6 +70,8 @@ func ConnMysql() *gorm.DB {
 	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{
 		// 禁用外键(指定外键时不会在mysql创建真实的外键约束)
 		DisableForeignKeyConstraintWhenMigrating: true,
+		// 打印sql日志
+		Logger: logger.Default.LogMode(logger.Info),
 	})
 	if err != nil {
 		Log.Panicf("初始化mysql数据库异常: %v", err)

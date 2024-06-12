@@ -5,8 +5,9 @@ import (
 	"CatMi-devops/middleware"
 	"CatMi-devops/utils/common"
 	"fmt"
-	"github.com/gin-gonic/gin"
 	"time"
+
+	"github.com/gin-gonic/gin"
 )
 
 // 初始化
@@ -42,6 +43,9 @@ func InitRoutes() *gin.Engine {
 
 	// 路由分组
 	apiGroup := r.Group("/" + config.Conf.System.UrlPathPrefix)
+	InitCmdbRoutes(apiGroup, authMiddleware)
+	InitDeployRoutes(apiGroup)
+
 	// 注册路由
 	InitBaseRoutes(apiGroup, authMiddleware)         // 注册基础路由, 不需要jwt认证中间件,不需要casbin中间件
 	InitUserRoutes(apiGroup, authMiddleware)         // 注册用户路由, jwt认证中间件,casbin鉴权中间件
