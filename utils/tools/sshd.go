@@ -3,6 +3,7 @@ package tools
 import (
 	"CatMi-devops/request"
 	"fmt"
+	"strings"
 
 	"github.com/sirupsen/logrus"
 	"golang.org/x/crypto/ssh"
@@ -26,7 +27,7 @@ func SshCommand(conf *request.SSHClientConfigReq, command string) (string, error
 	}
 	client, err := ssh.Dial("tcp", fmt.Sprintf("%s:%d", conf.PublicIP, conf.Port), config)
 	if err != nil {
-		return "", err
+		return "失败", err
 	}
 	defer client.Close()
 
@@ -42,4 +43,28 @@ func SshCommand(conf *request.SSHClientConfigReq, command string) (string, error
 	}
 
 	return string(output), nil
+}
+
+// CreateFileOnRemoteServer 在远程服务器上创建文件
+func CreateFileOnRemoteServer(sshConfig *request.SSHClientConfigReq, filename, typename, content string) (string, error) {
+	absoluteFilePath := "/tmp/" + filename + "." + typename
+
+	// Escape special characters and format the content for bash script
+	escapedContent := strings.ReplaceAll(content, "'", `'\''`)
+
+	// Construct the bash script content
+	scriptContent := fmt.Sprintf("echo '%s' > %s", escapedContent, absoluteFilePath)
+
+	// Execute the combined script as a single SSH command
+	command := fmt.Sprintf("%s && %s %s", scriptContent, typename, absoluteFilePath)
+
+	output, err := SshCommand(sshConfig, command)
+	if err != nil {
+		fmt.Println("SSH Error:", err)
+		return "", fmt.Errorf("Failed to execute SSH command: %v", err)
+	}
+
+	fmt.Println("SSH Output:", output) // Optional: Print the SSH output
+
+	return output, nil
 }

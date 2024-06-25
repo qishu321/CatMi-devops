@@ -20,7 +20,9 @@ type Template struct {
 	gorm.Model
 	TemplateID int64  `gorm:"type:bigint;not null;comment:'模板id'" json:"templateid" `
 	Name       string `gorm:"type:varchar(50);comment:'模板名称'" json:"name"`
-	Stepnames  string `gorm:"type:text;comment:'步骤详情'" json:"steps"` // 存储为 JSON 格式
+	Important  int    `gorm:"default:0;type:tinyint(1);column:important;comment:'是否启用env环境变量 1:是 2: 否'" json:"important"`
+	Taskenv    string `gorm:"type:text;comment:'步骤详情'" json:"taskenv"` // 存储为 JSON 格式
+	Stepnames  string `gorm:"type:text;comment:'步骤详情'" json:"steps"`   // 存储为 JSON 格式
 	Creator    string `gorm:"type:varchar(20);comment:'创建人'" json:"creator"`
 }
 
@@ -32,7 +34,7 @@ type Template_Log struct {
 	Stepname     string `gorm:"type:varchar(100);comment:'步骤名称'" json:"stepname"`
 	Sort         int    `gorm:"type:int;default:999;comment:'步骤顺序(1-999)'" json:"sort"`
 	Command      string `gorm:"type:text;comment:'执行命令'" json:"command"`
-	Status       uint   `gorm:"type:tinyint(1);default:1;comment:'步骤状态(正常/失败, 默认正常)'" json:"status"`
+	Status       int    `gorm:"type:tinyint(1);default:1;comment:'步骤状态(正常/失败, 默认正常)'" json:"status"`
 	Cmdbnames    string `gorm:"type:text;comment:'步骤绑定的服务器列表'" json:"cmdbnames"`
 	Timeouts     int    `gorm:"type:int;comment:'超时时间'" json:"timeouts"`
 	SSHReqParams string `json:"ssh_req_params"`
@@ -55,8 +57,9 @@ type Task struct {
 type TaskEnv struct {
 	gorm.Model
 	Name        string `gorm:"type:varchar(50);comment:'参数名称'" json:"name"`
+	Type        string `gorm:"type:varchar(50);comment:'脚本类型,select,input'" json:"type"  form:"type"`
 	Description string `gorm:"type:text;comment:'参数备注'" json:"description"  form:"description"`
 	Options     string `json:"options" form:"options" gorm:"type:text;comment:'参数内容'"`
-	Important   int8   `gorm:"default:0;type:tinyint(1);column:important;comment:'是否标记为必填 1:是 0: 否'" json:"important"`
+	Important   int    `gorm:"default:0;type:tinyint(1);column:important;comment:'是否标记为必填 1:是 2: 否'" json:"important"`
 	Creator     string `gorm:"type:varchar(20);comment:'创建人'" json:"creator"`
 }

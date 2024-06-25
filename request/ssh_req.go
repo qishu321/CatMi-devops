@@ -14,22 +14,35 @@ type SSHClientConfigReq struct {
 	TimeoutS   int           `form:"timeouts" json:"timeouts"` //超时时间
 
 }
+
 type TemplateReq struct {
 	TemplateID int64      `gorm:"type:bigint;not null;comment:'模板id'" json:"templateid" `
 	Name       string     `gorm:"type:varchar(50);comment:'模板名称'" json:"name" validate:"required"`
+	Important  int        ` json:"important" form:"important"` //是否启用环境变量
+	Taskenv    string     ` json:"taskenv"`                    // 存储为 JSON 格式
+	Stepnames  []Stepname `gorm:"-" json:"steps" validate:"required,dive"`
+}
+type EnableTemplateReq struct {
+	TemplateID int64      `gorm:"type:bigint;not null;comment:'模板id'" json:"templateid" `
+	Name       string     `gorm:"type:varchar(50);comment:'模板名称'" json:"name" validate:"required"`
+	Important  int        ` json:"important" form:"important"` //是否启用环境变量
+	Taskenv    string     ` json:"taskenv"`                    // 存储为 JSON 格式
+	Options    string     `json:"options" form:"options"`
 	Stepnames  []Stepname `gorm:"-" json:"steps" validate:"required,dive"`
 }
 
 type Stepname struct {
-	Stepname  string   `gorm:"type:varchar(100);comment:'步骤名称'" json:"stepname" validate:"required"`
-	Sort      int      `gorm:"type:int;default:999;comment:'步骤顺序(1-999)'" json:"sort" validate:"required"`
-	Command   string   `gorm:"type:text;comment:'执行命令'" json:"command" `
-	Cmdbnames []string `gorm:"type:text;comment:'步骤绑定的服务器列表'" json:"cmdbnames" `
-	Timeouts  int      `gorm:"type:int;comment:'超时时间'" json:"timeouts"`
+	Stepname  string `gorm:"type:varchar(100);comment:'步骤名称'" json:"stepname" validate:"required"`
+	Sort      int    `gorm:"type:int;default:999;comment:'步骤顺序(1-999)'" json:"sort" validate:"required"`
+	Task      string `json:"task" `
+	GroupName string `gorm:"type:text;comment:'步骤绑定的服务器组'" json:"groupName" `
+	Timeouts  int    `gorm:"type:int;comment:'超时时间'" json:"timeouts"`
 }
 
 type UpdateTemplateReq struct {
 	ID        uint       `json:"id" db:"id" form:"id"  validate:"required"`
+	Important int        ` json:"important" form:"important"` //是否启用环境变量
+	Taskenv   string     ` json:"taskenv"`
 	Name      string     `gorm:"type:varchar(50);comment:'模板名称'" json:"name"`
 	Stepnames []Stepname `gorm:"-" json:"steps" validate:"required,dive"`
 }
@@ -83,21 +96,19 @@ type SShDeleteReq struct {
 	Ids []uint `json:"Ids" validate:"required"`
 }
 
-type Options struct {
-	Environment map[string]string `json:"environment"`
-}
-
 type TaskEnvReq struct {
-	Name        string              ` json:"name" form:"name" validate:"required"`
-	Options     []map[string]string `json:"options" form:"options" validate:"required"`
-	Description string              `json:"description"  form:"description"`
-	Important   int8                ` json:"important" form:"important"`
+	Name        string ` json:"name" form:"name" validate:"required"`
+	Type        string ` json:"type"  form:"type" validate:"required"`
+	Options     string `json:"options" form:"options" validate:"required"`
+	Description string `json:"description"  form:"description"`
+	Important   int    ` json:"important" form:"important"`
 }
 
 type UpdateTaskEnvReq struct {
-	ID          uint                `json:"id" db:"id" form:"id"  validate:"required"`
-	Name        string              ` json:"name" form:"name" validate:"required"`
-	Options     []map[string]string `json:"options" form:"options" validate:"required"`
-	Description string              `json:"description"  form:"description"`
-	Important   int8                ` json:"important" form:"important"`
+	ID          uint   `json:"id" db:"id" form:"id"  validate:"required"`
+	Name        string ` json:"name" form:"name" validate:"required"`
+	Type        string ` json:"type"  form:"type" validate:"required"`
+	Options     string `json:"options" form:"options" validate:"required"`
+	Description string `json:"description"  form:"description"`
+	Important   int    ` json:"important" form:"important"`
 }

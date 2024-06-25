@@ -18,10 +18,12 @@ func (s Template_Log) Add(server *model.Template_Log) error {
 
 // 获取server列表
 func (s Template_Log) List(req *request.SShListReq) (log []*model.Template_Log, err error) {
-	db := common.DB.Model(&model.Template_Log{}).Order("created_at DESC")
+	subQuery := common.DB.Model(&model.Template_Log{}).Select("MIN(id) as id").Group("name")
+	db := common.DB.Model(&model.Template_Log{}).Where("id IN (?)", subQuery).Order("created_at DESC")
+
 	name := strings.TrimSpace(req.Name)
 	if name != "" {
-		db = db.Where("cmdb_name LIKE ?", fmt.Sprintf("%%%s%%", name))
+		db = db.Where("name LIKE ?", fmt.Sprintf("%%%s%%", name))
 	}
 	pageReq := tools.NewPageOption(req.PageNum, req.PageSize)
 	err = db.Offset(pageReq.PageNum).Limit(pageReq.PageSize).Find(&log).Error
@@ -31,14 +33,14 @@ func (s Template_Log) List(req *request.SShListReq) (log []*model.Template_Log, 
 // 获取指定server
 func (s Template_Log) Info(name string) ([]*model.Template_Log, error) {
 	var server []*model.Template_Log
-	err := common.DB.Where("name = ?", name).First(&server).Error
+	err := common.DB.Where("name = ?", name).Find(&server).Error
 	return server, err
 
 }
 
 // 获取server总数
-func (s Template_Log) Count() (count int64, err error) {
-	err = common.DB.Model(&model.Template_Log{}).Count(&count).Error
+func (s Template_Log) CountDistinctNames() (count int64, err error) {
+	err = common.DB.Model(&model.Template_Log{}).Distinct("name").Count(&count).Error
 	return count, err
 }
 

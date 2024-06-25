@@ -10,13 +10,14 @@ import (
 )
 
 var (
-	Sshd       = &SshdController{}
-	CommandLog = &LogController{}
-	Template   = &TemplateController{}
-	Task       = &TaskController{}
-	TaskEnv    = &TaskEnvController{}
-	validate   = validator.New()
-	trans      ut.Translator
+	Sshd         = &SshdController{}
+	CommandLog   = &LogController{}
+	Template     = &TemplateController{}
+	Template_Log = &Template_Log_Controller{}
+	Task         = &TaskController{}
+	TaskEnv      = &TaskEnvController{}
+	validate     = validator.New()
+	trans        ut.Translator
 )
 
 func Run(c *gin.Context, req interface{}, fn func() (interface{}, interface{})) {

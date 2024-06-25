@@ -7,7 +7,6 @@ import (
 	"CatMi-devops/request"
 	"CatMi-devops/response"
 	"CatMi-devops/utils/tools"
-	"encoding/json"
 	"fmt"
 
 	"github.com/gin-gonic/gin"
@@ -35,14 +34,11 @@ func (s TaskEnvSvc) Add(c *gin.Context, req interface{}) (data interface{}, rspE
 	if err != nil {
 		fmt.Errorf("获取当前登陆用户信息失败: %v", err)
 	}
-	OptionsJSON, err := json.Marshal(r.Options)
-	if err != nil {
-		return nil, tools.NewMySqlError(fmt.Errorf("OptionsJSON 解析失败"))
-	}
 
 	Server := model.TaskEnv{
 		Name:        r.Name,
-		Options:     string(OptionsJSON),
+		Type:        r.Type,
+		Options:     r.Options,
 		Important:   r.Important,
 		Description: r.Description,
 		Creator:     ctxUser.Username,
@@ -73,15 +69,12 @@ func (s TaskEnvSvc) Update(c *gin.Context, req interface{}) (data interface{}, r
 	if err != nil {
 		fmt.Errorf("获取当前登陆用户信息失败: %v", err)
 	}
-	OptionsJSON, err := json.Marshal(r.Options)
-	if err != nil {
-		return nil, tools.NewMySqlError(fmt.Errorf("OptionsJSON 解析失败"))
-	}
 
 	Server := model.TaskEnv{
 		Model:       gorm.Model{ID: r.ID},
+		Type:        r.Type,
 		Name:        r.Name,
-		Options:     string(OptionsJSON),
+		Options:     r.Options,
 		Important:   r.Important,
 		Description: r.Description,
 		Creator:     ctxUser.Username,

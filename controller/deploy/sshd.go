@@ -22,3 +22,10 @@ func (m *SshdController) SshdCommandParams(c *gin.Context) {
 		return deploysvc.SshdSvcs.SshdCommandParams(c, req)
 	})
 }
+
+func (m *SshdController) SshFileCommand(c *gin.Context) {
+	req := new(request.EnableTemplateReq)
+	Run(c, req, func() (interface{}, interface{}) {
+		return deploysvc.SshdSvcs.SshFileCommand(c, req)
+	})
+}

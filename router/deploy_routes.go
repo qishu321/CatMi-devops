@@ -15,6 +15,8 @@ func InitDeployRoutes(r *gin.RouterGroup) gin.IRoutes {
 	{
 		sshd.POST("/command", deploy.Sshd.Command)                     // 添加key
 		sshd.POST("/sshdCommandParams", deploy.Sshd.SshdCommandParams) // 添加key
+		sshd.POST("/sshFileCommand", deploy.Sshd.SshFileCommand)       // 添加key
+
 	}
 	logs := r.Group("/deploy/logs")
 	//// 开启jwt认证中间件
@@ -50,11 +52,13 @@ func InitDeployRoutes(r *gin.RouterGroup) gin.IRoutes {
 	//// 开启casbin鉴权中间件
 	//user.Use(middleware.CasbinMiddleware())
 	{
-		template.POST("/template_list", deploy.Template.List)     // 添加key
-		template.POST("/template_info", deploy.Template.Info)     // 添加key
-		template.POST("/template_del", deploy.Template.Delete)    // 添加key
-		template.POST("/template_add", deploy.Template.Add)       // 添加key
-		template.POST("/template_update", deploy.Template.Update) // 添加key
+		template.POST("/template_list", deploy.Template.List)         // 添加key
+		template.POST("/template_info", deploy.Template.Info)         // 添加key
+		template.POST("/template_del", deploy.Template.Delete)        // 添加key
+		template.POST("/template_add", deploy.Template.Add)           // 添加key
+		template.POST("/template_update", deploy.Template.Update)     // 添加key
+		template.POST("/template_log_list", deploy.Template_Log.List) // 添加key
+		template.POST("/template_log_info", deploy.Template_Log.Info) // 添加key
 
 	}
 

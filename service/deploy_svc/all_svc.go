@@ -6,10 +6,11 @@ import (
 )
 
 var (
-	ReqdeployErr   = tools.NewRspError(tools.SystemErr, fmt.Errorf("请求异常"))
-	SshdSvcs       = &SshdSvc{}
-	CommandLogSvcs = &CommandLogSvc{}
-	TemplateSvcs   = &TemplateSvc{}
-	TaskSvcs       = &TaskSvc{}
-	TaskEnvSvcs    = &TaskEnvSvc{}
+	ReqdeployErr    = tools.NewRspError(tools.SystemErr, fmt.Errorf("请求异常"))
+	SshdSvcs        = &SshdSvc{}
+	CommandLogSvcs  = &CommandLogSvc{}
+	TemplateSvcs    = &TemplateSvc{}
+	TaskSvcs        = &TaskSvc{}
+	TaskEnvSvcs     = &TaskEnvSvc{}
+	TemplateLogSvcs = &TemplateLogSvc{}
 )

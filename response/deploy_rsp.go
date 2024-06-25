@@ -6,6 +6,11 @@ type SShRsp struct {
 	CmdbName string      `json:"cmdbName"` // 服务器名称
 	Data     interface{} `json:"data"`
 }
+type TemplateSShRsp struct {
+	Stepname string   `json:"stepname"`
+	SShRsp   []SShRsp `json:"sshrsp"`
+}
+
 type SShParams struct {
 	CmdbName string `json:"CmdbName"`
 }
@@ -13,6 +18,11 @@ type SShParams struct {
 type TemplateRsp struct {
 	Total     int64            `json:"total"`
 	Templates []model.Template `json:"Templates"`
+}
+
+type Template_logRsp struct {
+	Total         int64                `json:"total"`
+	Templates_log []model.Template_Log `json:"Templates_log"`
 }
 
 type TaskRsp struct {

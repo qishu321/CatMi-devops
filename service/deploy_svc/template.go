@@ -40,9 +40,15 @@ func (s TemplateSvc) Add(c *gin.Context, req interface{}) (data interface{}, rsp
 	if err != nil {
 		return nil, tools.NewMySqlError(fmt.Errorf("CmdbNames 解析失败"))
 	}
+	// TaskenvJSON, err := json.Marshal(r.Taskenv)
+	// if err != nil {
+	// 	return nil, tools.NewMySqlError(fmt.Errorf("TaskenvJSON 解析失败"))
+	// }
 
 	Server := model.Template{
 		TemplateID: tools.GenerateRandomNumber(),
+		Taskenv:    r.Taskenv,
+		Important:  r.Important,
 		Name:       r.Name,
 		Stepnames:  string(StepnamesJSON),
 		Creator:    ctxUser.Username,
@@ -78,9 +84,15 @@ func (s TemplateSvc) Update(c *gin.Context, req interface{}) (data interface{}, 
 	if err != nil {
 		return nil, tools.NewMySqlError(fmt.Errorf("CmdbNames 解析失败"))
 	}
+	// TaskenvJSON, err := json.Marshal(r.Taskenv)
+	// if err != nil {
+	// 	return nil, tools.NewMySqlError(fmt.Errorf("TaskenvJSON 解析失败"))
+	// }
 
 	Server := model.Template{
 		Model:     gorm.Model{ID: r.ID},
+		Important: r.Important,
+		Taskenv:   r.Taskenv,
 		Name:      r.Name,
 		Stepnames: string(StepnamesJSON),
 		Creator:   ctxUser.Username,
